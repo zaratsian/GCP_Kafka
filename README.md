@@ -5,9 +5,13 @@
 1. Click [here](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/kafka?q=kafka&id=f19a0f63-fc57-47fd-9d94-8d5ca6af935e) to deploy Apache Kafka using Google Cloud Marketplace
 
   **Deployment Name:** kafka-server1
+  
   **Zone:** us-central1-f
+  
   **Machine Type:** 4vCPUs, 15GB Memory
+  
   **Boot Disk Type** SSD Persistent Disk
+  
   **BOot Disk Size** 50GB
 
 2. SSH into kafka-server1
