@@ -48,13 +48,14 @@ bq ls $dataset_id
 git clone https://github.com/zaratsian/Kafka_GCP.git
 ```
 
-5. Run Kafka Consumer Client for BigQuery (this will stream events from Kafka to Google BigQuery)
+5. Run Kafka Consumer Client for BigQuery (this is used to stream events from Kafka to BigQuery)
 
 ```
-python kafka_consumer_bigquery.py 
+python kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --bq_dataset_id kafka_ds --bq_table_id kafka_table1 &
 ```
 
 **NOTE: Kafka Command Line Consumer**
+
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka-server1-vm:9092 --topic topicz1
 
 
