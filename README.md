@@ -23,6 +23,30 @@ echo "[ INFO ] List all BigQuery tables within $dataset_id"
 bq ls $dataset_id
 ```
 
+## Create Service Account (so Kafka can write to BigQuery)
+
+```
+# Service Account Name
+sa_name=kafka-to-bigquery
+
+# Create Service Account
+gcloud iam service-accounts create $sa_name --display-name $sa_name
+
+# Add Roles (specifically for BigQuery)
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+  --member serviceAccount:$sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com \
+  --role roles/bigquery.dataEditor
+
+# Download Key
+gcloud iam service-accounts get-iam-policy \
+  $sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com \
+  --format json > $sa_name.json
+
+# Move to Google Cloud Storage
+gsutil mb gs://$GOOGLE_CLOUD_PROJECT-kafka
+gsutil cp $sa_name.json gs://$GOOGLE_CLOUD_PROJECT-kafka
+```
+
 
 ## Kafka Server Setup
 
@@ -45,13 +69,29 @@ bq ls $dataset_id
 4. Clone this Github repo
 
 ```
+sudo apt install git -y
 git clone https://github.com/zaratsian/Kafka_GCP.git
 ```
 
-5. Run Kafka Consumer Client for BigQuery (this is used to stream events from Kafka to BigQuery)
+5. Install Python Libraries
 
 ```
-python kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --bq_dataset_id kafka_ds --bq_table_id kafka_table1 &
+sudo apt install python-pip -y
+sudo pip install kafka-python==1.4.4
+sudo pip install google-cloud-bigquery==1.9.0
+```
+
+6. Copy SA into GCE instance
+
+```
+gsutil gs://
+```
+
+
+7. Run Kafka Consumer Client for BigQuery (this is used to stream events from Kafka to BigQuery)
+
+```
+python ./Kafka_GCP/kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --bq_dataset_id kafka_ds --bq_table_id kafka_table1 &
 ```
 
 **NOTE: Kafka Command Line Consumer**
@@ -67,19 +107,32 @@ python kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --ka
 gcloud ...
 ```
 
-2. Clone this Github repo
+2. SSH into this GCE Instance (which is the Kafka Client)
 
 ```
+```
+
+3. Install Python Libraries
+
+```
+sudo apt install python-pip -y
+sudo pip install kafka-python==1.4.4
+```
+
+4. Clone this Github repo
+
+```
+sudo apt install git -y
 git clone https://github.com/zaratsian/Kafka_GCP.git
 ```
 
-3. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
+5. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
 
 ```
 xxxx
 ```
 
-4. Deploy load testing using GKE
+6. Deploy load testing using GKE
 
 ```
 xxxx
