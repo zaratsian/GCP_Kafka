@@ -72,7 +72,7 @@ gsutil cp /tmp/$sa_name.json gs://$GOOGLE_CLOUD_PROJECT-kafka
 
 ```
 sudo apt install git -y
-git clone https://github.com/zaratsian/Kafka_GCP.git
+git clone https://github.com/zaratsian/GCP_Kafka.git
 ```
 
 5. Install Python Libraries
@@ -123,7 +123,7 @@ sudo pip install kafka-python==1.4.4
 
 ```
 sudo apt install git -y
-git clone https://github.com/zaratsian/Kafka_GCP.git
+git clone https://github.com/zaratsian/GCP_Kafka.git
 ```
 
 5. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
