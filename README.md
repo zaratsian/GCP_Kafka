@@ -37,16 +37,18 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
   --member serviceAccount:$sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com \
   --role roles/bigquery.dataEditor
 
-# Download Key
-gcloud iam service-accounts get-iam-policy \
-  $sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com \
-  --format json > $sa_name.json
+# List the Service Account Keys for the specified SA
+gcloud iam service-accounts keys list \
+  --iam-account $sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+
+# Create the SA Key
+gcloud iam service-accounts keys create /tmp/$sa_name.json \
+  --iam-account $sa_name@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
 
 # Move to Google Cloud Storage
 gsutil mb gs://$GOOGLE_CLOUD_PROJECT-kafka
-gsutil cp $sa_name.json gs://$GOOGLE_CLOUD_PROJECT-kafka
+gsutil cp /tmp/$sa_name.json gs://$GOOGLE_CLOUD_PROJECT-kafka
 ```
-
 
 ## Kafka Server Setup
 
@@ -84,9 +86,9 @@ sudo pip install google-cloud-bigquery==1.9.0
 6. Copy SA into GCE instance
 
 ```
-gsutil gs://
+GOOGLE_CLOUD_PROJECT="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
+gsutil cp gs://$GOOGLE_CLOUD_PROJECT-kafka/kafka-to-bigquery.json .
 ```
-
 
 7. Run Kafka Consumer Client for BigQuery (this is used to stream events from Kafka to BigQuery)
 
