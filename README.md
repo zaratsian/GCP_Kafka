@@ -135,5 +135,13 @@ python ./Kafka_GCP/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 
 6. Deploy load testing using GKE
 
 ```
+# Build Docker container
+./kafka_simulator_threaded/01_build.sh
 
+# Setup Container Registry
+./kafka_simulator_threaded/02_setup_container_registry.sh
+
+# Deploy GKE to execute the Kafka Simulation
+# NOTE: This will create the GKE Cluster, which takes a few minutes to spin up.
+./kafka_simulator_threaded/04_deploy_gke.sh
 ```
