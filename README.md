@@ -86,7 +86,8 @@ sudo pip install google-cloud-bigquery==1.9.0
 6. Copy SA into GCE instance
 
 ```
-GOOGLE_CLOUD_PROJECT="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
+cd ~
+export GOOGLE_CLOUD_PROJECT="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
 gsutil cp gs://$GOOGLE_CLOUD_PROJECT-kafka/kafka-to-bigquery.json .
 ```
 
