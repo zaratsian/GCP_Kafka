@@ -20,7 +20,7 @@ import multiprocessing
 from kafka import KafkaConsumer, KafkaProducer
 from google.cloud import bigquery
 
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "kafka-to-bigquery.json"  # Service Acct
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "{}/kafka-to-bigquery.json".format( os.environ['HOME'] )  # Service Acct
 
 
 #####################################################################
