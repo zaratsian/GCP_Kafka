@@ -26,17 +26,13 @@ import argparse
 def simulate_payload():
     
     datetimestamp = datetime.datetime.now()
-    pupil_x_angle = random.randint(-90,90)
-    pupil_y_angle = random.randint(-90,90)
-    pupil_size    = round(random.triangular(1,3,9),2)
     
     payload = {
         'id':           datetimestamp.strftime('%Y%m%d%H%M%S%f'),
         'date':         datetimestamp.strftime('%Y-%m-%d'),
         'timestamp':    datetimestamp.strftime('%H:%M:%S.%f'),
         'flag':         random.randint(0,1),
-        'value':        random.triangular(35,70,175))
-        
+        'value':        random.triangular(35,70,175)
     }
     
     return payload
