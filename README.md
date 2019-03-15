@@ -137,18 +137,23 @@ git clone https://github.com/zaratsian/GCP_Kafka.git
 python ./GCP_Kafka/kafka_simulator/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
 ```
 
-7. Deploy load testing using GKE
+7. Deploy load testing using GKE (execute from Google Cloud Shell)
 
 ```
+# NOTE: Execute these commands from the Google Cloud Shell
+
 # Install Docker (if not already installed)
-sudo apt update
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-sudo apt update
-apt-cache policy docker-ce
-sudo apt install -y docker-ce
-sudo usermod -aG docker ${USER}
+#sudo apt update
+#sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+#sudo apt update
+#apt-cache policy docker-ce
+#sudo apt install -y docker-ce
+#sudo usermod -aG docker ${USER}
+
+# Clone Git Repo
+git clone https://github.com/zaratsian/GCP_Kafka.git
 
 # Navigate to dir
 cd GCP_Kafka/kafka_simulator_threaded/
