@@ -72,9 +72,9 @@ def publish_kafka_event(params, producer, counter):
 if __name__ == "__main__":
     
     params = {
-        'bootstrap_servers'   : '35.184.69.2:9092',
+        'bootstrap_servers'   : 'kafka-server1-vm:9092',
         'send_to_kafka'       : 1,
-        'kafka_topic'         : 'eye_tracking',
+        'kafka_topic'         : 'topicz1',
         'time_delay'          : 5,
         'number_of_threads'   : 100
     }
