@@ -34,14 +34,9 @@ def simulate_payload():
         'id':           datetimestamp.strftime('%Y%m%d%H%M%S%f'),
         'date':         datetimestamp.strftime('%Y-%m-%d'),
         'timestamp':    datetimestamp.strftime('%H:%M:%S.%f'),
-        'leye_x_angle': pupil_x_angle,
-        'leye_y_angle': pupil_y_angle,
-        'leye_size_mm': pupil_size,
-        'reye_x_angle': pupil_x_angle if random.random()<=0.95 else random.randint(-90,90),
-        'reye_y_angle': pupil_y_angle if random.random()<=0.95 else random.randint(-90,90),
-        'reye_size_mm': pupil_size if random.random()<=0.95 else random.triangular(1,3,9),
-        'heart_rate':   int(random.triangular(35,70,175)),
-        'blink':        random.randint(0,1)
+        'flag':         random.randint(0,1),
+        'value':        random.triangular(35,70,175))
+        
     }
     
     return payload
