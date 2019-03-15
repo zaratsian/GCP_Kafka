@@ -140,13 +140,26 @@ python ./GCP_Kafka/kafka_simulator/kafka_simulator.py --bootstrap_servers kafka-
 7. Deploy load testing using GKE
 
 ```
+# Install Docker (if not already installed)
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install -y docker-ce
+sudo usermod -aG docker ${USER}
+
+# Navigate to dir
+cd GCP_Kafka/kafka_simulator_threaded/
+
 # Build Docker container
-./GCP_Kafka/kafka_simulator_threaded/01_build.sh
+sudo ./01_build.sh
 
 # Setup Container Registry
-./GCP_Kafka/kafka_simulator_threaded/02_setup_container_registry.sh
+sudo ./02_setup_container_registry.sh
 
 # Deploy GKE to execute the Kafka Simulation
 # NOTE: This will create the GKE Cluster, which takes a few minutes to spin up.
-./GCP_Kafka/kafka_simulator_threaded/04_deploy_gke.sh
+sudo ./04_deploy_gke.sh
 ```
