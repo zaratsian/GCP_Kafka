@@ -94,7 +94,7 @@ gsutil cp gs://$GOOGLE_CLOUD_PROJECT-kafka/kafka-to-bigquery.json .
 7. Run Kafka Consumer Client for BigQuery (this is used to stream events from Kafka to BigQuery)
 
 ```
-python ./Kafka_GCP/kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --bq_dataset_id kafka_ds --bq_table_id kafka_table1 &
+python ./GCP_Kafka/kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --bq_dataset_id kafka_ds --bq_table_id kafka_table1 &
 ```
 
 **NOTE: Kafka Command Line Consumer**
@@ -129,7 +129,7 @@ git clone https://github.com/zaratsian/GCP_Kafka.git
 5. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
 
 ```
-python ./Kafka_GCP/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
+python ./GCP_Kafka/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
 ```
 
 6. Deploy load testing using GKE
