@@ -1,4 +1,4 @@
-# Google Cloud Kafka Deployment
+# Scaled Kafka Simulation on Google Cloud
 
 
 ## Google BigQuery Setup
