@@ -4,9 +4,10 @@
 #   Variables
 #
 #############################################################################
+project_id="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
 gke_cluster_name=gke-cluster-z1
 gke_app_name=gke-app-z1
-gke_app_image=gcr.io/ml-healthcare-poc-201901/kafka_simulator_threaded
+gke_app_image=gcr.io/$project_id/kafka_simulator_threaded
 number_of_nodes=10
 number_of_replicas=$((number_of_nodes * 2))
 gke_compute_zone=us-central1-b
