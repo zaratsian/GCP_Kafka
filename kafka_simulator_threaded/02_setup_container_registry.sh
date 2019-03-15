@@ -7,7 +7,7 @@
 ######################################################################
 
 # Variables
-project_id=ml-healthcare-poc-201901 
+project_id="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
 container_name=kafka_simulator_threaded
 
 
