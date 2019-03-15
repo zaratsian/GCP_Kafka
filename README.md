@@ -109,7 +109,10 @@ python ./GCP_Kafka/kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-
 2. Deploy a GCE instance, which acts as the Kafka Client
 
 ```
-gcloud compute --project=ml-healthcare-poc-201901 instances create kafka-client1 --zone=us-east1-b --machine-type=n1-standard-4 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=394982914074-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --image=debian-9-drawfork-v20181101 --image-project=eip-images --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=kafka-client1
+project_id=$GOOGLE_CLOUD_PROJECT
+gce_instance_name=kafka-client1
+
+gcloud compute --project=$project_id instances create $gce_instance_name --zone=us-east1-b --machine-type=n1-standard-4 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --scopes=https://www.googleapis.com/auth/cloud-platform --image=debian-9-drawfork-v20181101 --image-project=eip-images --boot-disk-size=20GB --boot-disk-type=pd-standard --boot-disk-device-name=$gce_instance_name
 ```
 
 3. SSH into this GCE Instance (which is the Kafka Client)
