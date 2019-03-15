@@ -1,10 +1,11 @@
 # Kafka Simulation on Google Cloud
 
 **Index:**
-    * Google BigQuery Setup
-    * Create Service Account
-    * Kafka Server Setup
-    * Kafka Client Setup
+
+    - Google BigQuery Setup
+    - Create Service Account
+    - Kafka Server Setup
+    - Kafka Client Setup
 
 
 ## Google BigQuery Setup
