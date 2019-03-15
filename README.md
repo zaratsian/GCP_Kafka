@@ -168,3 +168,20 @@ sudo ./02_setup_container_registry.sh
 # NOTE: This will create the GKE Cluster, which takes a few minutes to spin up.
 sudo ./04_deploy_gke.sh
 ```
+
+8. GKE Cluster can be cleanup / shut down by using the following commands:
+
+```
+gke_cluster_name=gke-cluster-z1
+gke_app_name=gke-app-z1
+gke_compute_zone=us-central1-b
+
+# Delete a service
+#kubectl delete service $gke_app_name
+
+# Delete a Deployment
+#kubectl delete deployment $gke_app_name
+
+# Delete GKE Cluster
+#gcloud container clusters delete $gke_cluster_name --zone $gke_compute_zone
+```
