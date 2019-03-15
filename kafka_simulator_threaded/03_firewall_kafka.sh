@@ -1,4 +1,8 @@
-gcloud compute --project=ml-healthcare-poc-201901 firewall-rules \
+#Variables
+#project_id="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
+project_id=$GOOGLE_CLOUD_PROJECT
+
+gcloud compute --project=$project_id firewall-rules \
         create kafka-firewall \
         --direction=INGRESS \
         --priority=1000 \
