@@ -2,10 +2,10 @@
 
 **Index:**
 
-    1. Configure [Google BigQuery](https://cloud.google.com/bigquery/)
-    2. Create Service Account within GCP
-    3. Install and configure Kafka Server
-    4. Install and configure Kafka Client - With containerized simulator, scaled with [GKE](https://cloud.google.com/kubernetes-engine/)
+1. Configure [Google BigQuery](https://cloud.google.com/bigquery/)
+2. Create Service Account within GCP
+3. Install and configure Kafka Server
+4. Install and configure Kafka Client - With containerized simulator, scaled with [GKE](https://cloud.google.com/kubernetes-engine/)
 
 
 ## Google BigQuery Setup
