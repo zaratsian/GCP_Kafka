@@ -4,7 +4,8 @@
 #   Variables
 #
 #############################################################################
-project_id="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
+#project_id="$(curl 'http://metadata.google.internal/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')"
+project_id=$GOOGLE_CLOUD_PROJECT
 gke_cluster_name=gke-cluster-z1
 gke_app_name=gke-app-z1
 gke_app_image=gcr.io/$project_id/kafka_simulator_threaded
