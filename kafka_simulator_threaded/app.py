@@ -30,8 +30,10 @@ def simulate_payload():
     
     payload = {
         'id':           datetimestamp.strftime('%Y%m%d%H%M%S%f'),
-        'datetimestamp':datetimestamp.strftime('%Y-%m-%d %H:%M:%S.%f'),
-        'heart_rate':   int(random.triangular(35,70,175))
+        'date':         datetimestamp.strftime('%Y-%m-%d'),
+        'timestamp':    datetimestamp.strftime('%H:%M:%S.%f'),
+        'flag':         random.randint(0,1),
+        'value':        random.triangular(35,70,175)
     }
     
     return payload
