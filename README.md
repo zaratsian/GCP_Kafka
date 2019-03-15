@@ -104,35 +104,37 @@ python ./GCP_Kafka/kafka_consumer_bigquery.py --bootstrap_servers kafka-server1-
 
 ## Kafka Client Setup
 
-1. Deploy a GCE instance, which acts as the Kafka Client
+1. Launch Google Cloud Shell from the GCP Console
+
+2. Deploy a GCE instance, which acts as the Kafka Client
 
 ```
 gcloud compute --project=ml-healthcare-poc-201901 instances create kafka-client1 --zone=us-east1-b --machine-type=n1-standard-4 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=394982914074-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --image=debian-9-drawfork-v20181101 --image-project=eip-images --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=kafka-client1
 ```
 
-2. SSH into this GCE Instance (which is the Kafka Client)
+3. SSH into this GCE Instance (which is the Kafka Client)
 
-3. Install Python Libraries
+4. Install Python Libraries
 
 ```
 sudo apt install python-pip -y
 sudo pip install kafka-python==1.4.4
 ```
 
-4. Clone this Github repo
+5. Clone this Github repo
 
 ```
 sudo apt install git -y
 git clone https://github.com/zaratsian/GCP_Kafka.git
 ```
 
-5. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
+6. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
 
 ```
 python ./GCP_Kafka/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
 ```
 
-6. Deploy load testing using GKE
+7. Deploy load testing using GKE
 
 ```
 # Build Docker container
