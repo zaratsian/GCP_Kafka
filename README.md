@@ -134,19 +134,19 @@ git clone https://github.com/zaratsian/GCP_Kafka.git
 6. Test Run - Simulate 100 Kafka events, which will pass through Kafka and persist in BigQuery
 
 ```
-python ./GCP_Kafka/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
+python ./GCP_Kafka/kafka_simulator/kafka_simulator.py --bootstrap_servers kafka-server1-vm:9092 --kafka_topic topicz1 --time_delay 5 --send_to_kafka 1
 ```
 
 7. Deploy load testing using GKE
 
 ```
 # Build Docker container
-./kafka_simulator_threaded/01_build.sh
+./GCP_Kafka/kafka_simulator_threaded/01_build.sh
 
 # Setup Container Registry
-./kafka_simulator_threaded/02_setup_container_registry.sh
+./GCP_Kafka/kafka_simulator_threaded/02_setup_container_registry.sh
 
 # Deploy GKE to execute the Kafka Simulation
 # NOTE: This will create the GKE Cluster, which takes a few minutes to spin up.
-./kafka_simulator_threaded/04_deploy_gke.sh
+./GCP_Kafka/kafka_simulator_threaded/04_deploy_gke.sh
 ```
